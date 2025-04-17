@@ -1,7 +1,7 @@
 package org.kuraterut.zoohm2hse.presentation.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.kuraterut.zoohm2hse.application.services.AnimalTransferService;
+import org.kuraterut.zoohm2hse.application.ports.AnimalTransferPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/transfers")
 @RequiredArgsConstructor
 public class AnimalTransferController {
-    private final AnimalTransferService transferService;
+    private final AnimalTransferPort transferPort;
 
     @PostMapping
     public ResponseEntity<Void> transferAnimal(
             @RequestParam Long animalId,
             @RequestParam Long enclosureId) {
-        transferService.transferAnimal(animalId, enclosureId);
+        transferPort.transferAnimal(animalId, enclosureId);
         return ResponseEntity.noContent().build();
     }
 }

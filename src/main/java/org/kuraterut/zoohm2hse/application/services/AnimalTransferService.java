@@ -3,6 +3,7 @@ package org.kuraterut.zoohm2hse.application.services;
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.exceptions.AnimalNotFoundException;
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureNotFoundException;
+import org.kuraterut.zoohm2hse.application.ports.AnimalTransferPort;
 import org.kuraterut.zoohm2hse.domain.Animal;
 import org.kuraterut.zoohm2hse.domain.Enclosure;
 import org.kuraterut.zoohm2hse.domain.events.AnimalMovedEvent;
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class AnimalTransferService {
+public class AnimalTransferService implements AnimalTransferPort {
     private final AnimalRepository animalRepository;
     private final EnclosureRepository enclosureRepository;
     private final ApplicationEventPublisher eventPublisher;

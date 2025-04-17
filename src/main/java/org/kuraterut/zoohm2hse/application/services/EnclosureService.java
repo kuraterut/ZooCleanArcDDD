@@ -3,6 +3,7 @@ package org.kuraterut.zoohm2hse.application.services;
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureIsNotEmptyException;
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureNotFoundException;
+import org.kuraterut.zoohm2hse.application.ports.EnclosurePort;
 import org.kuraterut.zoohm2hse.domain.Enclosure;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.EnclosureRepository;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EnclosureService {
+public class EnclosureService implements EnclosurePort {
     private final EnclosureRepository enclosureRepository;
 
     public Enclosure createEnclosure(Enclosure enclosure) {

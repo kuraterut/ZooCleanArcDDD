@@ -2,6 +2,7 @@ package org.kuraterut.zoohm2hse.application.services;
 
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.exceptions.FeedingScheduleNotFoundException;
+import org.kuraterut.zoohm2hse.application.ports.FeedingSchedulePort;
 import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.FeedingScheduleRepository;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateFeedingScheduleRequest;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class FeedingScheduleService {
+public class FeedingScheduleService implements FeedingSchedulePort {
     private final FeedingScheduleRepository scheduleRepository;
     private final AnimalService animalService;
 

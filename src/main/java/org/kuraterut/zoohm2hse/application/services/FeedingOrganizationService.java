@@ -1,6 +1,7 @@
 package org.kuraterut.zoohm2hse.application.services;
 
 import lombok.RequiredArgsConstructor;
+import org.kuraterut.zoohm2hse.application.ports.FeedingOrganizationPort;
 import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
 import org.kuraterut.zoohm2hse.domain.events.FeedingTimeEvent;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.FeedingScheduleRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class FeedingOrganizationService {
+public class FeedingOrganizationService implements FeedingOrganizationPort {
     private final FeedingScheduleRepository scheduleRepository;
     private final ApplicationEventPublisher eventPublisher;
 

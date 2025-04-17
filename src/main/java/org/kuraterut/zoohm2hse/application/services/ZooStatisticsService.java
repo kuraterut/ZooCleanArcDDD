@@ -1,6 +1,7 @@
 package org.kuraterut.zoohm2hse.application.services;
 
 import lombok.RequiredArgsConstructor;
+import org.kuraterut.zoohm2hse.application.ports.ZooStatisticsPort;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.AnimalRepository;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.EnclosureRepository;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class ZooStatisticsService {
+public class ZooStatisticsService implements ZooStatisticsPort {
     private final AnimalRepository animalRepository;
     private final EnclosureRepository enclosureRepository;
 
