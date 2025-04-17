@@ -5,8 +5,12 @@ import org.kuraterut.zoohm2hse.application.exceptions.EnclosureIsNotEmptyExcepti
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureNotFoundException;
 import org.kuraterut.zoohm2hse.application.ports.EnclosurePort;
 import org.kuraterut.zoohm2hse.domain.Enclosure;
+import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureMaxCapacity;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.EnclosureRepository;
+import org.kuraterut.zoohm2hse.presentation.dto.request.CreateEnclosureRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,7 +18,11 @@ import java.util.List;
 public class EnclosureService implements EnclosurePort {
     private final EnclosureRepository enclosureRepository;
 
-    public Enclosure createEnclosure(Enclosure enclosure) {
+    public Enclosure createEnclosure(CreateEnclosureRequest request) {
+        Enclosure enclosure = new Enclosure();
+        enclosure.setType(request.getType());
+        enclosure.setMaxCapacity(new EnclosureMaxCapacity(request.getMaxCapacity()));
+        enclosure.setAnimals(new ArrayList<>());
         return enclosureRepository.save(enclosure);
     }
 

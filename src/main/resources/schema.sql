@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS animal (
 
 -- Расписание кормлений
 CREATE TABLE IF NOT EXISTS feeding_schedule (
-                                                id BIGINT PRIMARY KEY AUTO_INCREMENT,
-                                                animal_id BIGINT NOT NULL,
-                                                feeding_time TIME NOT NULL,
-                                                food_type VARCHAR(10) NOT NULL CHECK (food_type IN ('MEAT', 'FISH', 'FRUIT', 'VEGETABLES', 'GRAIN')),
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    animal_id BIGINT NOT NULL,
+    feeding_time TIME NOT NULL,
+    food_type VARCHAR(10) NOT NULL CHECK (food_type IN ('MEAT', 'FISH', 'FRUIT', 'VEGETABLES', 'GRAIN')),
     is_completed BOOLEAN NOT NULL DEFAULT false,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (animal_id) REFERENCES animal(id) ON DELETE CASCADE

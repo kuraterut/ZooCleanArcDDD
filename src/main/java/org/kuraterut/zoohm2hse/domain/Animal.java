@@ -2,11 +2,7 @@ package org.kuraterut.zoohm2hse.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.kuraterut.zoohm2hse.domain.valueobjects.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.FoodType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.Gender;
-
-import java.time.LocalDate;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.*;
 
 @Entity
 @Getter
@@ -19,15 +15,17 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Embedded
     @Column(nullable = false)
-    private String name;
+    private AnimalName name;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AnimalType type;
 
+    @Embedded
     @Column(nullable = false)
-    private LocalDate birthDate;
+    private AnimalBirthday birthDate;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -37,8 +35,9 @@ public class Animal {
     @Column(nullable = false)
     private FoodType favoriteFood;
 
+    @Embedded
     @Column(nullable = false)
-    private boolean healthy = true;
+    private AnimalHealthFlag healthy;
 
     @ManyToOne
     @JoinColumn(name = "enclosure_id")
@@ -51,12 +50,12 @@ public class Animal {
     }
 
     public void heal() {
-        this.healthy = true;
+        this.healthy = new AnimalHealthFlag(true);
         System.out.println("Животное " + name + " вылечено");
     }
 
     public void markAsSick() {
-        this.healthy = false;
+        this.healthy = new AnimalHealthFlag(false);
         System.out.println("Животное " + name + " помечено как больное");
     }
 

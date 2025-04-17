@@ -32,13 +32,28 @@ public class GlobalExceptionHandler {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InvalidAnimalNameException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidAnimalName(InvalidAnimalNameException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidAnimalBirthdayException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidAnimalBirthday(InvalidAnimalBirthdayException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(EnclosureIsFullException.class)
     public ResponseEntity<ErrorResponse> handleEnclosureFull(EnclosureIsFullException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(InvalidNewTimeForFeedingSchedule.class)
-    public ResponseEntity<ErrorResponse> handleInvalidNewTime(InvalidNewTimeForFeedingSchedule ex) {
+    @ExceptionHandler(InvalidEnclosureMaxCapacityException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidEnclosureMaxCapacity(InvalidEnclosureMaxCapacityException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidFeedingTimeException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidFeedingTime(InvalidFeedingTimeException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 @Getter
 public class AnimalFedEvent extends ApplicationEvent {
     private final Long animalId;
-    private final LocalDateTime timestamp;
+    private final LocalDateTime dateTime;
 
     public AnimalFedEvent(Long animalId) {
         super(animalId);
         this.animalId = animalId;
-        this.timestamp = LocalDateTime.now();
+        this.dateTime = LocalDateTime.now();
     }
 }

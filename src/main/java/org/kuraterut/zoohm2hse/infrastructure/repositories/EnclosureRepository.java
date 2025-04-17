@@ -1,7 +1,7 @@
 package org.kuraterut.zoohm2hse.infrastructure.repositories;
 
 import org.kuraterut.zoohm2hse.domain.Enclosure;
-import org.kuraterut.zoohm2hse.domain.valueobjects.EnclosureType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

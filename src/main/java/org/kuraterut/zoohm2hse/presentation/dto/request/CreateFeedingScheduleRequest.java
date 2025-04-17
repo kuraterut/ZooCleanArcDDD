@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.kuraterut.zoohm2hse.domain.valueobjects.FoodType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalTime;
 
@@ -14,6 +15,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class CreateFeedingScheduleRequest {
     private Long animalId;
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private LocalTime feedingTime;
     private FoodType foodType;
 }

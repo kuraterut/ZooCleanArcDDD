@@ -9,6 +9,9 @@ import org.kuraterut.zoohm2hse.domain.Enclosure;
 import org.kuraterut.zoohm2hse.domain.events.AnimalFedEvent;
 import org.kuraterut.zoohm2hse.domain.events.AnimalHealEvent;
 import org.kuraterut.zoohm2hse.domain.events.AnimalSickEvent;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalBirthday;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalHealthFlag;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalName;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.AnimalRepository;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateAnimalRequest;
 import org.springframework.context.ApplicationEventPublisher;
@@ -26,12 +29,12 @@ public class AnimalService implements AnimalPort {
 
     public Animal createAnimal(CreateAnimalRequest request) {
         Animal animal = new Animal();
-        animal.setName(request.getName());
+        animal.setName(new AnimalName(request.getName()));
         animal.setType(request.getType());
-        animal.setBirthDate(request.getBirthDate());
+        animal.setBirthDate(new AnimalBirthday(request.getBirthDate()));
         animal.setGender(request.getGender());
         animal.setFavoriteFood(request.getFavoriteFood());
-        animal.setHealthy(request.isHealthy());
+        animal.setHealthy(new AnimalHealthFlag(request.isHealthy()));
         Enclosure enclosure = enclosureService.getEnclosureById(request.getEnclosureId());
         animal.setEnclosure(enclosure);
         return animalRepository.save(animal);
@@ -67,7 +70,7 @@ public class AnimalService implements AnimalPort {
         animal.setBirthDate(animalDetails.getBirthDate());
         animal.setGender(animalDetails.getGender());
         animal.setFavoriteFood(animalDetails.getFavoriteFood());
-        animal.setHealthy(animalDetails.isHealthy());
+        animal.setHealthy(animalDetails.getHealthy());
         return animalRepository.save(animal);
     }
 

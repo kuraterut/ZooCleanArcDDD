@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
-import org.kuraterut.zoohm2hse.domain.valueobjects.FoodType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
 
 import java.time.LocalTime;
 
@@ -23,8 +23,8 @@ public class FeedingScheduleResponse {
     public FeedingScheduleResponse(final FeedingSchedule feedingSchedule) {
         this.id = feedingSchedule.getId();
         this.animal = new AnimalResponse(feedingSchedule.getAnimal());
-        this.feedingTime = feedingSchedule.getFeedingTime();
+        this.feedingTime = feedingSchedule.getFeedingTime().getValue();
         this.foodType = feedingSchedule.getFoodType();
-        this.isCompleted = feedingSchedule.isCompleted();
+        this.isCompleted = feedingSchedule.getIsCompleted().isValue();
     }
 }

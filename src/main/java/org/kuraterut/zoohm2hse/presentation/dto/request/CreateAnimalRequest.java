@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.kuraterut.zoohm2hse.domain.valueobjects.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.FoodType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.Gender;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.Gender;
 
 import java.time.LocalDate;
 
-// presentation/dto/CreateAnimalRequest.java
 @Getter
 @Setter
 @NoArgsConstructor

@@ -3,6 +3,7 @@ package org.kuraterut.zoohm2hse.presentation.controllers;
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.ports.EnclosurePort;
 import org.kuraterut.zoohm2hse.domain.Enclosure;
+import org.kuraterut.zoohm2hse.presentation.dto.request.CreateEnclosureRequest;
 import org.kuraterut.zoohm2hse.presentation.dto.response.EnclosureResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,8 @@ public class EnclosureController {
     private final EnclosurePort enclosurePort;
 
     @PostMapping
-    public ResponseEntity<EnclosureResponse> createEnclosure(@RequestBody Enclosure enclosure) {
-        EnclosureResponse response = new EnclosureResponse(enclosurePort.createEnclosure(enclosure));
+    public ResponseEntity<EnclosureResponse> createEnclosure(@RequestBody CreateEnclosureRequest request) {
+        EnclosureResponse response = new EnclosureResponse(enclosurePort.createEnclosure(request));
         return ResponseEntity.ok(response);
     }
 

@@ -27,7 +27,7 @@ public class ZooStatisticsService implements ZooStatisticsPort {
             Map<String, Object> enclosureStats = new HashMap<>();
             enclosureStats.put("currentAnimals", enclosure.getAnimals().size());
             enclosureStats.put("maxCapacity", enclosure.getMaxCapacity());
-            enclosureStats.put("availableSpace", enclosure.getMaxCapacity() - enclosure.getAnimals().size());
+            enclosureStats.put("availableSpace", enclosure.getMaxCapacity().getValue() - enclosure.getAnimals().size());
             stats.put(key, enclosureStats);
         });
 

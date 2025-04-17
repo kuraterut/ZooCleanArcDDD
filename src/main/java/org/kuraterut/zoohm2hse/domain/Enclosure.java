@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.kuraterut.zoohm2hse.application.exceptions.AnimalTypeIsNotCompatibleException;
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureIsFullException;
-import org.kuraterut.zoohm2hse.domain.valueobjects.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.EnclosureType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureMaxCapacity;
+import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureType;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -28,8 +28,9 @@ public class Enclosure {
     @Column(nullable = false, unique = true)
     private EnclosureType type;
 
+    @Embedded
     @Column(nullable = false)
-    private int maxCapacity;
+    private EnclosureMaxCapacity maxCapacity;
 
     @OneToMany(mappedBy = "enclosure", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals = new ArrayList<>();
@@ -37,7 +38,7 @@ public class Enclosure {
 
     // Основные методы
     public void addAnimal(Animal animal) {
-        if (animals.size() >= maxCapacity) {
+        if (animals.size() >= maxCapacity.getValue()) {
             throw new EnclosureIsFullException("Can't move animal. Target enclosure is full");
         }
         if (!isCompatible(animal)) {

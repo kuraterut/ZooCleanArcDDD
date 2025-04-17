@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.exceptions.FeedingScheduleNotFoundException;
 import org.kuraterut.zoohm2hse.application.ports.FeedingSchedulePort;
 import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
+import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingScheduleCompletedFlag;
+import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingTime;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.FeedingScheduleRepository;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateFeedingScheduleRequest;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,9 @@ public class FeedingScheduleService implements FeedingSchedulePort {
     public FeedingSchedule createSchedule(CreateFeedingScheduleRequest request) {
         FeedingSchedule schedule = new FeedingSchedule();
         schedule.setAnimal(animalService.getAnimalById(request.getAnimalId()));
-        schedule.setFeedingTime(request.getFeedingTime());
+        schedule.setFeedingTime(new FeedingTime(request.getFeedingTime()));
         schedule.setFoodType(request.getFoodType());
-        schedule.setCompleted(false);
+        schedule.setIsCompleted(new FeedingScheduleCompletedFlag(false));
         return scheduleRepository.save(schedule);
     }
 
@@ -55,7 +57,7 @@ public class FeedingScheduleService implements FeedingSchedulePort {
         schedule.setAnimal(scheduleDetails.getAnimal());
         schedule.setFeedingTime(scheduleDetails.getFeedingTime());
         schedule.setFoodType(scheduleDetails.getFoodType());
-        schedule.setCompleted(scheduleDetails.isCompleted());
+        schedule.setIsCompleted(scheduleDetails.getIsCompleted());
         return scheduleRepository.save(schedule);
     }
     public void completeFeeding(Long scheduleId) {

@@ -3,8 +3,8 @@ package org.kuraterut.zoohm2hse.presentation.dto.response;
 import lombok.Getter;
 import org.kuraterut.zoohm2hse.domain.Animal;
 import org.kuraterut.zoohm2hse.domain.Enclosure;
-import org.kuraterut.zoohm2hse.domain.valueobjects.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.EnclosureType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureType;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class EnclosureResponse {
     public EnclosureResponse(Enclosure enclosure) {
         this.id = enclosure.getId();
         this.type = enclosure.getType();
-        this.maxCapacity = enclosure.getMaxCapacity();
+        this.maxCapacity = enclosure.getMaxCapacity().getValue();
         this.animals = enclosure.getAnimals().stream()
                 .map(AnimalInfo::new)
                 .toList();
@@ -32,7 +32,7 @@ public class EnclosureResponse {
 
         public AnimalInfo(Animal animal) {
             this.id = animal.getId();
-            this.name = animal.getName();
+            this.name = animal.getName().getValue();
             this.type = animal.getType();
         }
     }

@@ -1,4 +1,4 @@
-package org.kuraterut.zoohm2hse.domain.valueobjects;
+package org.kuraterut.zoohm2hse.domain.valueobjects.enclosure;
 
 public enum EnclosureType {
     PREDATOR_ENCLOSURE,   // Для хищников
