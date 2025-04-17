@@ -1,0 +1,68 @@
+TODO убрать это
+zoo-management/
+├── src/
+│   ├── main/
+│   │   ├── java/com/zoo/
+│   │   │   ├── domain/                # Ядро системы (Domain Layer)
+│   │   │   │   ├── model/
+│   │   │   │   │   ├── Animal.java
+│   │   │   │   │   ├── Enclosure.java
+│   │   │   │   │   ├── FeedingSchedule.java
+│   │   │   │   │   ├── valueobjects/  # Value Objects
+│   │   │   │   │   │   ├── AnimalType.java
+│   │   │   │   │   │   ├── EnclosureType.java
+│   │   │   │   │   │   ├── FoodType.java
+│   │   │   │   │   │   └── ...
+│   │   │   │   ├── events/            # Доменные события
+│   │   │   │   │   ├── AnimalMovedEvent.java
+│   │   │   │   │   └── FeedingTimeEvent.java
+│   │   │   │   └── exception/         # Доменные исключения
+│   │   │   │       ├── ZooDomainException.java
+│   │   │   │       └── ...
+│   │   │   ├── application/           # Слой приложения (Application Layer)
+│   │   │   │   ├── service/
+│   │   │   │   │   ├── AnimalTransferService.java
+│   │   │   │   │   ├── FeedingOrganizationService.java
+│   │   │   │   │   └── ZooStatisticsService.java
+│   │   │   │   ├── dto/               # DTO для передачи между слоями
+│   │   │   │   │   ├── AnimalDTO.java
+│   │   │   │   │   ├── EnclosureDTO.java
+│   │   │   │   │   └── ...
+│   │   │   │   └── ports/             # Интерфейсы для взаимодействия с внешними слоями
+│   │   │   │       ├── in/
+│   │   │   │       └── out/
+│   │   │   ├── infrastructure/        # Внешний слой (Infrastructure Layer)
+│   │   │   │   ├── config/
+│   │   │   │   ├── persistence/
+│   │   │   │   │   ├── entity/        # JPA сущности
+│   │   │   │   │   │   ├── AnimalEntity.java
+│   │   │   │   │   │   ├── EnclosureEntity.java
+│   │   │   │   │   │   └── ...
+│   │   │   │   │   ├── repository/    # Репозитории
+│   │   │   │   │   │   ├── AnimalRepository.java
+│   │   │   │   │   │   ├── EnclosureRepository.java
+│   │   │   │   │   │   └── ...
+│   │   │   │   │   └── mapper/       # Мапперы между domain и entity
+│   │   │   │   │       ├── AnimalMapper.java
+│   │   │   │   │       └── ...
+│   │   │   │   └── web/              # Адаптеры для внешних сервисов
+│   │   │   ├── presentation/         # Слой представления (Presentation Layer)
+│   │   │   │   ├── controller/
+│   │   │   │   │   ├── AnimalController.java
+│   │   │   │   │   ├── EnclosureController.java
+│   │   │   │   │   ├── FeedingController.java
+│   │   │   │   │   └── StatisticsController.java
+│   │   │   │   ├── dto/              # DTO для API
+│   │   │   │   │   ├── request/
+│   │   │   │   │   │   ├── CreateAnimalRequest.java
+│   │   │   │   │   │   └── ...
+│   │   │   │   │   └── response/
+│   │   │   │   │       ├── AnimalResponse.java
+│   │   │   │   │       └── ...
+│   │   │   │   └── exception/        # Обработчики исключений
+│   │   │   └── ZooApplication.java   # Главный класс приложения
+│   │   └── resources/
+│   │       ├── application.yml
+│   │       └── data.sql              # Начальные данные для H2
+│   └── test/                        # Тесты
+└── pom.xml                          # Файл зависимостей Maven
