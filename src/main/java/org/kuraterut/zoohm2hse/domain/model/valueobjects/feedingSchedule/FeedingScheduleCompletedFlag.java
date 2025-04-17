@@ -1,4 +1,4 @@
-package org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule;
+package org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -14,7 +14,7 @@ public class FeedingScheduleCompletedFlag {
         this.value = value;
     }
 
-    protected FeedingScheduleCompletedFlag() { // Для JPA
+    protected FeedingScheduleCompletedFlag() {
         this.value = false;
     }
 

@@ -3,14 +3,13 @@ package org.kuraterut.zoohm2hse.application.services;
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.exceptions.FeedingScheduleNotFoundException;
 import org.kuraterut.zoohm2hse.application.ports.FeedingSchedulePort;
-import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
-import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingScheduleCompletedFlag;
-import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingTime;
+import org.kuraterut.zoohm2hse.domain.model.FeedingSchedule;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule.FeedingScheduleCompletedFlag;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule.FeedingTime;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.FeedingScheduleRepository;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateFeedingScheduleRequest;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.time.LocalTime;
 import java.util.List;
 

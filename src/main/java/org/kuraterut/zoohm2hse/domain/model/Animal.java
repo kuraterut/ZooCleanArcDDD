@@ -1,8 +1,8 @@
-package org.kuraterut.zoohm2hse.domain;
+package org.kuraterut.zoohm2hse.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.*;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.*;
 
 @Entity
 @Getter
@@ -44,7 +44,6 @@ public class Animal {
     private Enclosure enclosure;
 
 
-    // Методы доменной логики
     public void feed() {
         System.out.println(name + " покормлен(а) " + favoriteFood);
     }

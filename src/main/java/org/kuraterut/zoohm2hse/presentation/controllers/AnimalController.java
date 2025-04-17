@@ -3,7 +3,7 @@ package org.kuraterut.zoohm2hse.presentation.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.ports.AnimalPort;
-import org.kuraterut.zoohm2hse.domain.Animal;
+import org.kuraterut.zoohm2hse.domain.model.Animal;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateAnimalRequest;
 import org.kuraterut.zoohm2hse.presentation.dto.response.AnimalResponse;
 import org.springframework.http.ResponseEntity;
@@ -36,14 +36,6 @@ public class AnimalController {
                 .map(AnimalResponse::new)
                 .toList();
         return ResponseEntity.ok(responses);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<AnimalResponse> updateAnimal(
-            @PathVariable Long id,
-            @RequestBody Animal animalDetails) {
-        AnimalResponse response = new AnimalResponse(animalPort.updateAnimal(id, animalDetails));
-        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
+import org.kuraterut.zoohm2hse.domain.model.FeedingSchedule;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.FoodType;
 
 import java.time.LocalTime;
 

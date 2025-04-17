@@ -1,6 +1,6 @@
 package org.kuraterut.zoohm2hse.application.ports;
 
-import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
+import org.kuraterut.zoohm2hse.domain.model.FeedingSchedule;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateFeedingScheduleRequest;
 
 import java.util.List;

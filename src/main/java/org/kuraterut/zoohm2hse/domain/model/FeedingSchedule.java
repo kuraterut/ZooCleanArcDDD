@@ -1,11 +1,11 @@
-package org.kuraterut.zoohm2hse.domain;
+package org.kuraterut.zoohm2hse.domain.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.kuraterut.zoohm2hse.application.exceptions.InvalidFeedingTimeException;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingScheduleCompletedFlag;
-import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingTime;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.FoodType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule.FeedingScheduleCompletedFlag;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule.FeedingTime;
 
 import java.time.LocalTime;
 
@@ -37,7 +37,6 @@ public class FeedingSchedule {
     private FeedingScheduleCompletedFlag isCompleted;
 
 
-    // Доменные методы
     public void markAsCompleted() {
         this.isCompleted = new FeedingScheduleCompletedFlag(true);
     }

@@ -5,12 +5,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.kuraterut.zoohm2hse.application.exceptions.AnimalNotFoundException;
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureNotFoundException;
 import org.kuraterut.zoohm2hse.application.services.AnimalTransferService;
-import org.kuraterut.zoohm2hse.domain.Animal;
-import org.kuraterut.zoohm2hse.domain.Enclosure;
+import org.kuraterut.zoohm2hse.domain.model.Animal;
+import org.kuraterut.zoohm2hse.domain.model.Enclosure;
 import org.kuraterut.zoohm2hse.domain.events.AnimalMovedEvent;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureMaxCapacity;
-import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.enclosure.EnclosureMaxCapacity;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.enclosure.EnclosureType;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.AnimalRepository;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.EnclosureRepository;
 import org.mockito.ArgumentCaptor;
@@ -41,7 +41,6 @@ class AnimalTransferServiceTest {
 
     @Test
     void transferAnimal_ValidTransfer_PublishesEvent() {
-        // Arrange
         Long animalId = 1L;
         Long targetEnclosureId = 2L;
         Long sourceEnclosureId = 3L;
@@ -64,10 +63,8 @@ class AnimalTransferServiceTest {
         when(animalRepository.findById(animalId)).thenReturn(Optional.of(animal));
         when(enclosureRepository.findById(targetEnclosureId)).thenReturn(Optional.of(targetEnclosure));
 
-        // Act
         transferService.transferAnimal(animalId, targetEnclosureId);
 
-        // Assert
         assertEquals(targetEnclosure, animal.getEnclosure());
         assertFalse(sourceEnclosure.getAnimals().contains(animal));
         assertTrue(targetEnclosure.getAnimals().contains(animal));
@@ -83,18 +80,15 @@ class AnimalTransferServiceTest {
 
     @Test
     void transferAnimal_AnimalNotFound_ThrowsException() {
-        // Arrange
         Long animalId = 999L;
         when(animalRepository.findById(animalId)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(AnimalNotFoundException.class, () ->
                 transferService.transferAnimal(animalId, 1L));
     }
 
     @Test
     void transferAnimal_EnclosureNotFound_ThrowsException() {
-        // Arrange
         Long animalId = 1L;
         Long invalidEnclosureId = 999L;
         Animal animal = new Animal();
@@ -102,19 +96,17 @@ class AnimalTransferServiceTest {
         when(animalRepository.findById(animalId)).thenReturn(Optional.of(animal));
         when(enclosureRepository.findById(invalidEnclosureId)).thenReturn(Optional.empty());
 
-        // Act & Assert
         assertThrows(EnclosureNotFoundException.class, () ->
                 transferService.transferAnimal(animalId, invalidEnclosureId));
     }
 
     @Test
     void transferAnimal_FromWildToEnclosure_WorksCorrectly() {
-        // Arrange
         Long animalId = 1L;
         Long targetEnclosureId = 2L;
         Animal animal = new Animal();
         animal.setId(animalId);
-        animal.setEnclosure(null); // Животное не в вольере
+        animal.setEnclosure(null);
         animal.setType(AnimalType.HERBIVORE);
 
         Enclosure targetEnclosure = new Enclosure();
@@ -125,10 +117,8 @@ class AnimalTransferServiceTest {
         when(animalRepository.findById(animalId)).thenReturn(Optional.of(animal));
         when(enclosureRepository.findById(targetEnclosureId)).thenReturn(Optional.of(targetEnclosure));
 
-        // Act
         transferService.transferAnimal(animalId, targetEnclosureId);
 
-        // Assert
         assertNull(captureEvent().getFromEnclosureId());
         assertEquals(targetEnclosureId, captureEvent().getToEnclosureId());
     }

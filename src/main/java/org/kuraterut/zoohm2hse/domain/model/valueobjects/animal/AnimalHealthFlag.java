@@ -1,4 +1,4 @@
-package org.kuraterut.zoohm2hse.domain.valueobjects.animal;
+package org.kuraterut.zoohm2hse.domain.model.valueobjects.animal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -14,7 +14,7 @@ public class AnimalHealthFlag {
         this.value = value;
     }
 
-    protected AnimalHealthFlag() { // Для JPA
+    protected AnimalHealthFlag() {
         this.value = false;
     }
 

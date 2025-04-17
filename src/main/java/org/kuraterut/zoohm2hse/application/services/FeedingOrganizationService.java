@@ -2,7 +2,7 @@ package org.kuraterut.zoohm2hse.application.services;
 
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.ports.FeedingOrganizationPort;
-import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
+import org.kuraterut.zoohm2hse.domain.model.FeedingSchedule;
 import org.kuraterut.zoohm2hse.domain.events.FeedingTimeEvent;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.FeedingScheduleRepository;
 import org.springframework.context.ApplicationEventPublisher;
@@ -18,7 +18,7 @@ public class FeedingOrganizationService implements FeedingOrganizationPort {
     private final FeedingScheduleRepository scheduleRepository;
     private final ApplicationEventPublisher eventPublisher;
 
-    @Scheduled(cron = "0 * * * * *") // Проверка каждую минуту
+    @Scheduled(cron = "0 * * * * *")
     public void checkFeedingTime() {
         LocalTime now = LocalTime.now().withSecond(0).withNano(0);
         List<FeedingSchedule> schedules = scheduleRepository.findUpcomingFeedings(now);

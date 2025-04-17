@@ -1,8 +1,8 @@
 package org.kuraterut.zoohm2hse.domain.events;
 
 import lombok.Getter;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule.FeedingTime;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.FoodType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule.FeedingTime;
 import org.springframework.context.ApplicationEvent;
 
 import java.time.LocalTime;

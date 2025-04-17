@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.FoodType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.Gender;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.FoodType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.Gender;
 
 import java.time.LocalDate;
 

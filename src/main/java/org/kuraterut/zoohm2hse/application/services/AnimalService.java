@@ -4,14 +4,14 @@ package org.kuraterut.zoohm2hse.application.services;
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.exceptions.AnimalNotFoundException;
 import org.kuraterut.zoohm2hse.application.ports.AnimalPort;
-import org.kuraterut.zoohm2hse.domain.Animal;
-import org.kuraterut.zoohm2hse.domain.Enclosure;
+import org.kuraterut.zoohm2hse.domain.model.Animal;
+import org.kuraterut.zoohm2hse.domain.model.Enclosure;
 import org.kuraterut.zoohm2hse.domain.events.AnimalFedEvent;
 import org.kuraterut.zoohm2hse.domain.events.AnimalHealEvent;
 import org.kuraterut.zoohm2hse.domain.events.AnimalSickEvent;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalBirthday;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalHealthFlag;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalName;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalBirthday;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalHealthFlag;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalName;
 import org.kuraterut.zoohm2hse.infrastructure.repositories.AnimalRepository;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateAnimalRequest;
 import org.springframework.context.ApplicationEventPublisher;
@@ -58,20 +58,6 @@ public class AnimalService implements AnimalPort {
             throw new AnimalNotFoundException("Animal not found with id: " + id);
         }
         animalRepository.deleteById(id);
-    }
-
-    public Animal updateAnimal(Long id, Animal animalDetails) {
-        if (!animalRepository.existsById(id)) {
-            throw new AnimalNotFoundException("Animal not found with id: " + id);
-        }
-        Animal animal = getAnimalById(id);
-        animal.setName(animalDetails.getName());
-        animal.setType(animalDetails.getType());
-        animal.setBirthDate(animalDetails.getBirthDate());
-        animal.setGender(animalDetails.getGender());
-        animal.setFavoriteFood(animalDetails.getFavoriteFood());
-        animal.setHealthy(animalDetails.getHealthy());
-        return animalRepository.save(animal);
     }
 
     @Transactional

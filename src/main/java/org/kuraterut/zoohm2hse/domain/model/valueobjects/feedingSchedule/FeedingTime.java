@@ -1,4 +1,4 @@
-package org.kuraterut.zoohm2hse.domain.valueobjects.feedingSchedule;
+package org.kuraterut.zoohm2hse.domain.model.valueobjects.feedingSchedule;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -20,7 +20,7 @@ public class FeedingTime {
         this.value = value;
     }
 
-    protected FeedingTime() { // Для JPA
+    protected FeedingTime() {
         this.value = null;
     }
 

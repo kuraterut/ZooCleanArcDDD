@@ -1,6 +1,6 @@
 package org.kuraterut.zoohm2hse.application.ports;
 
-import org.kuraterut.zoohm2hse.domain.Enclosure;
+import org.kuraterut.zoohm2hse.domain.model.Enclosure;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateEnclosureRequest;
 
 import java.util.List;

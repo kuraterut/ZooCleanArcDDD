@@ -1,15 +1,14 @@
-package org.kuraterut.zoohm2hse.domain;
+package org.kuraterut.zoohm2hse.domain.model;
 
 import java.util.List;
 
-// domain/Enclosure.java
 import jakarta.persistence.*;
 import lombok.*;
 import org.kuraterut.zoohm2hse.application.exceptions.AnimalTypeIsNotCompatibleException;
 import org.kuraterut.zoohm2hse.application.exceptions.EnclosureIsFullException;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureMaxCapacity;
-import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.enclosure.EnclosureMaxCapacity;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.enclosure.EnclosureType;
 
 import java.util.ArrayList;
 
@@ -35,8 +34,6 @@ public class Enclosure {
     @OneToMany(mappedBy = "enclosure", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Animal> animals = new ArrayList<>();
 
-
-    // Основные методы
     public void addAnimal(Animal animal) {
         if (animals.size() >= maxCapacity.getValue()) {
             throw new EnclosureIsFullException("Can't move animal. Target enclosure is full");
@@ -57,7 +54,6 @@ public class Enclosure {
     }
 
     private boolean isCompatible(Animal animal) {
-        // Проверяем совместимость типа вольера и животного
         return (this.type == EnclosureType.PREDATOR_ENCLOSURE && animal.getType() == AnimalType.PREDATOR) ||
                 (this.type == EnclosureType.HERBIVORE_ENCLOSURE && animal.getType() == AnimalType.HERBIVORE) ||
                 (this.type == EnclosureType.AVIARY && animal.getType() == AnimalType.BIRD) ||

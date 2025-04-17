@@ -1,10 +1,10 @@
 package org.kuraterut.zoohm2hse.presentation.dto.response;
 
 import lombok.Getter;
-import org.kuraterut.zoohm2hse.domain.Animal;
-import org.kuraterut.zoohm2hse.domain.Enclosure;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
-import org.kuraterut.zoohm2hse.domain.valueobjects.enclosure.EnclosureType;
+import org.kuraterut.zoohm2hse.domain.model.Animal;
+import org.kuraterut.zoohm2hse.domain.model.Enclosure;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.enclosure.EnclosureType;
 
 import java.util.List;
 

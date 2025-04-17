@@ -1,4 +1,4 @@
-package org.kuraterut.zoohm2hse.domain.valueobjects.animal;
+package org.kuraterut.zoohm2hse.domain.model.valueobjects.animal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -19,7 +19,7 @@ public class AnimalBirthday {
         this.value = value;
     }
 
-    protected AnimalBirthday() { // Для JPA
+    protected AnimalBirthday() {
         this.value = null;
     }
 

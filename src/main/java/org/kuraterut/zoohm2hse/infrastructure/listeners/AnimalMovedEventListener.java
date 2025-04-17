@@ -15,10 +15,5 @@ public class AnimalMovedEventListener {
                 event.getAnimalId(),
                 event.getFromEnclosureId() != null ? event.getFromEnclosureId() : "none",
                 event.getToEnclosureId());
-
-        // Здесь можно добавить:
-        // - Отправку уведомлений сотрудникам
-        // - Обновление кэша
-        // - Логирование в БД
     }
 }

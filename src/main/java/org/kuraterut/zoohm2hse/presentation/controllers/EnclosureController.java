@@ -2,7 +2,7 @@ package org.kuraterut.zoohm2hse.presentation.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.ports.EnclosurePort;
-import org.kuraterut.zoohm2hse.domain.Enclosure;
+import org.kuraterut.zoohm2hse.domain.model.Enclosure;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateEnclosureRequest;
 import org.kuraterut.zoohm2hse.presentation.dto.response.EnclosureResponse;
 import org.springframework.http.ResponseEntity;
@@ -35,14 +35,6 @@ public class EnclosureController {
                 .map(EnclosureResponse::new)
                 .toList();
         return ResponseEntity.ok(responses);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<EnclosureResponse> updateEnclosure(
-            @PathVariable Long id,
-            @RequestBody Enclosure enclosureDetails) {
-        EnclosureResponse response = new EnclosureResponse(enclosurePort.updateEnclosure(id, enclosureDetails));
-        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

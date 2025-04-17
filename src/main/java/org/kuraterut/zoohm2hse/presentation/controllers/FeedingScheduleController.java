@@ -2,7 +2,7 @@ package org.kuraterut.zoohm2hse.presentation.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.kuraterut.zoohm2hse.application.ports.FeedingSchedulePort;
-import org.kuraterut.zoohm2hse.domain.FeedingSchedule;
+import org.kuraterut.zoohm2hse.domain.model.FeedingSchedule;
 import org.kuraterut.zoohm2hse.presentation.dto.request.CreateFeedingScheduleRequest;
 import org.kuraterut.zoohm2hse.presentation.dto.response.FeedingScheduleResponse;
 import org.springframework.http.ResponseEntity;
@@ -36,14 +36,6 @@ public class FeedingScheduleController {
                 .map(FeedingScheduleResponse::new)
                 .toList();
         return ResponseEntity.ok(responses);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<FeedingScheduleResponse> updateSchedule(
-            @PathVariable Long id,
-            @RequestBody FeedingSchedule scheduleDetails) {
-        FeedingScheduleResponse response = new FeedingScheduleResponse(schedulePort.updateSchedule(id, scheduleDetails));
-        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

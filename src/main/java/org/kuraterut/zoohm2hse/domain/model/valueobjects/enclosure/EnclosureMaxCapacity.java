@@ -1,4 +1,4 @@
-package org.kuraterut.zoohm2hse.domain.valueobjects.enclosure;
+package org.kuraterut.zoohm2hse.domain.model.valueobjects.enclosure;
 
 
 import jakarta.persistence.Column;
@@ -20,7 +20,7 @@ public class EnclosureMaxCapacity {
         this.value = value;
     }
 
-    protected EnclosureMaxCapacity() { // Для JPA
+    protected EnclosureMaxCapacity() {
         this.value = 0;
     }
 }

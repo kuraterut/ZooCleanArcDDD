@@ -1,7 +1,7 @@
 package org.kuraterut.zoohm2hse.infrastructure.repositories;
 
-import org.kuraterut.zoohm2hse.domain.Animal;
-import org.kuraterut.zoohm2hse.domain.valueobjects.animal.AnimalType;
+import org.kuraterut.zoohm2hse.domain.model.Animal;
+import org.kuraterut.zoohm2hse.domain.model.valueobjects.animal.AnimalType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
