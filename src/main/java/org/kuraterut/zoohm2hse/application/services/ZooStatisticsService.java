@@ -23,10 +23,10 @@ public class ZooStatisticsService implements ZooStatisticsPort {
         stats.put("sickAnimalsCount", animalRepository.findByHealthyFalse().size());
 
         enclosureRepository.findAll().forEach(enclosure -> {
-            String key = enclosure.getType().toString().toLowerCase() + "EnclosureStats";
+            String key = enclosure.getType().toString().toLowerCase() + "_EnclosureStats";
             Map<String, Object> enclosureStats = new HashMap<>();
             enclosureStats.put("currentAnimals", enclosure.getAnimals().size());
-            enclosureStats.put("maxCapacity", enclosure.getMaxCapacity());
+            enclosureStats.put("maxCapacity", enclosure.getMaxCapacity().getValue());
             enclosureStats.put("availableSpace", enclosure.getMaxCapacity().getValue() - enclosure.getAnimals().size());
             stats.put(key, enclosureStats);
         });
